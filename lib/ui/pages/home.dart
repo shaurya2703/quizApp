@@ -12,8 +12,13 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Quiz App'),
       ),
-      body: Container(
-        child: Text('Home Page'),
+      body: Column(
+        children: <Widget>[
+          Container(
+            height: MediaQuery.of(context).size.height / 3,
+            decoration: BoxDecoration(color: Colors.red),
+          )
+        ],
       ),
     );
   }
