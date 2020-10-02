@@ -16,7 +16,7 @@ class _QuizPageState extends State<QuizPage> {
       ),
       body: Container(
         child: Center(
-          child: Text('Sample Text'),
+          child: Text('Sample Text Goes Here'),
         ),
       ),
     );
