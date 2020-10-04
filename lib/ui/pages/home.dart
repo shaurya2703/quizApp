@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:quizApp/Widgets/bottomsheet.dart';
 import 'package:quizApp/models/categories.dart';
+import 'package:quizApp/ui/pages/quiz_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -47,7 +48,10 @@ class _HomePageState extends State<HomePage> {
 Widget _buildCategoryItem(BuildContext context, int index) {
   Category category = categories[index];
   return MaterialButton(
-    onPressed: () => _categoryPressed(context, category),
+    // onPressed: () => _categoryPressed(context, category),
+    onPressed: () {
+      Navigator.pushNamed(context, '/quizPage');
+    },
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
     color: Colors.grey.shade800,
     textColor: Colors.white70,

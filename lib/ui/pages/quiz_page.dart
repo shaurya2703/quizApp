@@ -12,6 +12,8 @@ class QuizPage extends StatefulWidget {
     this.difficulty,
     this.category,
   }) : super(key: key);
+
+class QuizPage extends StatefulWidget {
   @override
   _QuizPageState createState() => _QuizPageState();
 }
@@ -19,6 +21,17 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red[500],
+        elevation: 0.0,
+        title: Text('Quiz Page'),
+      ),
+      body: Container(
+        child: Center(
+          child: Text('Sample Text'),
+        ),
+      ),
+    );
   }
 }
