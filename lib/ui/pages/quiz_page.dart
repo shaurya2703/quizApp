@@ -1,4 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:quizApp/models/categories.dart';
+
+class QuizPage extends StatefulWidget {
+  final Category category;
+  final int noOfQuestions;
+  final String difficulty;
+
+  QuizPage({
+    Key key,
+    this.noOfQuestions,
+    this.difficulty,
+    this.category,
+  }) : super(key: key);
 
 class QuizPage extends StatefulWidget {
   @override

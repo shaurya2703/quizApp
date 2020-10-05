@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:quizApp/Widgets/bottomsheet.dart';
 import 'package:quizApp/models/categories.dart';
 import 'package:quizApp/ui/pages/quiz_page.dart';
 
@@ -69,13 +70,11 @@ Widget _buildCategoryItem(BuildContext context, int index) {
   );
 }
 
-// void _categoryPressed(BuildContext context, Category category) {
-//   showModalBottomSheet(
-//       context: context,
-//       builder: (context) {
-//         return Container(
-//           height: 100,
-//           child: Text(category.name),
-//         );
-//       });
-// }
+void _categoryPressed(BuildContext context, Category category) {
+  showModalBottomSheet(
+      context: context,
+      builder: (context) => BottomSheet(
+            builder: (context) => MyBottomSheet(category: category),
+            onClosing: () {},
+          ));
+}
