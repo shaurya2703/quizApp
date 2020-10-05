@@ -12,8 +12,6 @@ class QuizPage extends StatefulWidget {
     this.difficulty,
     this.category,
   }) : super(key: key);
-
-class QuizPage extends StatefulWidget {
   @override
   _QuizPageState createState() => _QuizPageState();
 }
