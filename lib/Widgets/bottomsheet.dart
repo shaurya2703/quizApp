@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:quizApp/models/categories.dart';
+import 'package:quizApp/models/question.dart';
+import 'package:quizApp/resources/api.dart';
 import 'package:quizApp/ui/pages/quiz_page.dart';
 
 class MyBottomSheet extends StatefulWidget {
   final Category category;
 
-  MyBottomSheet({Key key, @required this.category}) : super(key: key);
+  MyBottomSheet({@required this.category});
 
   @override
   _MyBottomSheetState createState() => _MyBottomSheetState();
@@ -20,8 +22,8 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
   @override
   void initState() {
     super.initState();
-    _noOfQuestions = 10;
-    _difficulty = "easy";
+    _noOfQuestions = 0;
+    _difficulty = "";
     processing = false;
   }
 
@@ -226,10 +228,14 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
     setState(() {
       processing = true;
     });
+    List<Question> questions =
+        await getQuestions(widget.category, _noOfQuestions, _difficulty);
+    // print(questions);
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => QuizPage(),
+          builder: (context) =>
+              QuizPage(category: widget.category, questions: questions),
         ));
     setState(() {
       processing = false;
