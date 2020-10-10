@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:quizApp/models/categories.dart';
 import 'package:quizApp/models/question.dart';
 import 'package:quizApp/resources/api.dart';
+import 'package:quizApp/ui/pages/check_answers.dart';
 import 'package:quizApp/ui/pages/quiz_page.dart';
 
 class MyBottomSheet extends StatefulWidget {
@@ -230,12 +231,13 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
     });
     List<Question> questions =
         await getQuestions(widget.category, _noOfQuestions, _difficulty);
-    // print(questions);
     Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) =>
               QuizPage(category: widget.category, questions: questions),
+          // print(questions);
+          // CheckAnswerPage(questions: questions)));
         ));
     setState(() {
       processing = false;
