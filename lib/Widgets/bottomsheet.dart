@@ -230,7 +230,6 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
     });
     List<Question> questions =
         await getQuestions(widget.category, _noOfQuestions, _difficulty);
-    // print(questions);
     Navigator.push(
         context,
         MaterialPageRoute(
