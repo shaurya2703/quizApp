@@ -5,13 +5,9 @@ import 'package:quizApp/models/question.dart';
 
 class CheckAnswerPage extends StatelessWidget {
   final List<Question> questions;
-  Map<int, dynamic> answers = {
-    1: "abc",
-    2: "def",
-    3: "xyz",
-  };
+  final Map<int, dynamic> answers;
 
-  CheckAnswerPage({@required this.questions});
+  CheckAnswerPage({@required this.questions, @required this.answers});
 
   @override
   Widget build(BuildContext context) {
@@ -39,30 +35,75 @@ class CheckAnswerPage extends StatelessWidget {
               var correct_answer =
                   unescape.convert(questions[index].correctAnswer);
               return Card(
-                  margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                  margin: EdgeInsets.fromLTRB(15, 5, 15, 10),
                   child: Column(
                     children: <Widget>[
                       ListTile(
-                        title: Text(
-                          text,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        title: Padding(
+                          padding: const EdgeInsets.only(bottom: 7.0),
+                          child: Text(
+                            text,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
                         ),
-                        subtitle: Column(
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Text("Correct Answer : "),
-                                Text(correct_answer)
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Text("Your Answer : "),
-                                Text(correct_answer)
-                              ],
-                            ),
-                          ],
-                        ),
+                        subtitle: answers[index] != correct_answer
+                            ? Column(
+                                children: <Widget>[
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      children: <Widget>[
+                                        Text("Correct Answer : ",
+                                            style: TextStyle(fontSize: 17)),
+                                        Text(
+                                          correct_answer,
+                                          style: TextStyle(
+                                              color: Colors.green,
+                                              fontSize: 17),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 7,
+                                  ),
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      children: <Widget>[
+                                        Text(
+                                          "Your Answer : ",
+                                          style: TextStyle(fontSize: 17),
+                                        ),
+                                        Text(
+                                          answers[index],
+                                          style: TextStyle(
+                                              color: Colors.red, fontSize: 17),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : Container(
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: <Widget>[
+                                      Text(
+                                        "Your Answer : ",
+                                        style: TextStyle(fontSize: 17),
+                                      ),
+                                      Text(
+                                        answers[index],
+                                        style: TextStyle(
+                                            color: Colors.green, fontSize: 17),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
                       )
                     ],
                   ));

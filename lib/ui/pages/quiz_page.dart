@@ -3,6 +3,9 @@ import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:html_unescape/html_unescape.dart';
 import 'package:quizApp/models/categories.dart';
 import 'package:quizApp/models/question.dart';
+import 'package:quizApp/ui/pages/result_page.dart';
+
+import 'check_answers.dart';
 
 class QuizPage extends StatefulWidget {
   final List<Question> questions;
@@ -25,7 +28,8 @@ class _QuizPageState extends State<QuizPage> {
     final List<dynamic> options = question.incorrectAnswers;
 
     if (!options.contains(question.correctAnswer)) {
-      options.insert(_currentIndex, question.correctAnswer);
+      // options.insert(_currentIndex % 3, question.correctAnswer);
+      options.add(question.correctAnswer);
       options.shuffle();
     }
 
@@ -83,10 +87,10 @@ class _QuizPageState extends State<QuizPage> {
                             title: Text(HtmlUnescape().convert("$option")),
                             groupValue: _answers[_currentIndex],
                             value: option,
-                            onChanged: (value){
+                            onChanged: (value) {
                               setState(() {
                                 _answers[_currentIndex] = option;
-                                print(_currentIndex);
+                                // print(_currentIndex);
                               });
                             },
                           )),
@@ -123,11 +127,17 @@ class _QuizPageState extends State<QuizPage> {
     if (_currentIndex < (widget.questions.length - 1)) {
       setState(() {
         _currentIndex++;
+        print(_currentIndex);
       });
     } else {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) {
-          return null;
+          // return CheckAnswerPage(
+          //     questions: widget.questions, answers: _answers);
+          return ResultPage(
+            answers: _answers,
+            questions: widget.questions,
+          );
         },
       ));
     }
