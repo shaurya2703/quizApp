@@ -17,7 +17,6 @@ Future<List<Question>> getQuestions(
   http.Response response = await http.get(url);
   List<Map<String, dynamic>> data =
       List<Map<String, dynamic>>.from(json.decode(response.body)["results"]);
-  print(data);
 
   List<Question> questions = List<Question>();
 
@@ -31,7 +30,7 @@ Future<List<Question>> getQuestions(
             : Difficulty.hard;
     String _question = element["question"];
     String _correctAnswer = element["correct_answer"];
-    List<dynamic> _incorrectAnswers = element["incorrect_answer"];
+    List<dynamic> _incorrectAnswers = element["incorrect_answers"];
 
     Question question = Question(
       categoryName: _categoryName,

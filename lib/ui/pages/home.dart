@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:quizApp/Widgets/bottomsheet.dart';
 import 'package:quizApp/models/categories.dart';
@@ -11,6 +12,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    //for app to remain in potarit view only
+    //even if the user tries to rotate the screen
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
