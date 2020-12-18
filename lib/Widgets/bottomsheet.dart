@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:quizApp/models/categories.dart';
 import 'package:quizApp/models/question.dart';
 import 'package:quizApp/resources/api.dart';
-import 'package:quizApp/ui/pages/check_answers.dart';
 import 'package:quizApp/ui/pages/quiz_page.dart';
 
 class MyBottomSheet extends StatefulWidget {

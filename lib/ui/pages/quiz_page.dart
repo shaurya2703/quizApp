@@ -5,7 +5,6 @@ import 'package:quizApp/models/categories.dart';
 import 'package:quizApp/models/question.dart';
 import 'package:quizApp/ui/pages/result_page.dart';
 
-import 'check_answers.dart';
 
 class QuizPage extends StatefulWidget {
   final List<Question> questions;

@@ -3,6 +3,7 @@ import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:quizApp/models/question.dart';
 import 'package:quizApp/ui/pages/check_answers.dart';
 
+// ignore: must_be_immutable
 class ResultPage extends StatelessWidget {
   final List<Question> questions;
   final Map<int, dynamic> answers;
